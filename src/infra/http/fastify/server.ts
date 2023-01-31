@@ -2,7 +2,12 @@ import Fastify, { FastifyRequest, FastifyReply } from "fastify";
 
 function buildServer() {
     const server = Fastify({
-        logger: true
+        logger: {
+            level: 'info',
+            transport: {
+                target: 'pino-pretty'
+            }
+        }
     })
 
     server.get("/healhcheck", async ()=> {
